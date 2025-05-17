@@ -4,8 +4,6 @@ let images = document.querySelector('.images');
 let more_btn = document.querySelector('.more-btn button');
 let page = 0;
 
-//const accessKey = "RU05lfwdHHWpOvI7uLk4_rjJ-lYMI0BL1UsxZdmnxqA";
-
 async function getResponse() {
     //let url = `https://api.unsplash.com/search/photos?page=${page?page:Math.floor(Math.random() * 10) + 1}&query=${input.value ? input.value :'random'}&client_id=${accessKey}&per_page=20`;
 
@@ -130,6 +128,7 @@ function downloadCustomImage(button, Url) {
 getResponse();
 input.addEventListener('keyup',(e)=>{
     if (e.key == 'Enter') {
+        page = 1;
         getResponse(); 
     }
 })
