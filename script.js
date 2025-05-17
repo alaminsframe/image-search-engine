@@ -5,8 +5,6 @@ let more_btn = document.querySelector('.more-btn button');
 let page = 0;
 
 async function getResponse() {
-    //let url = `https://api.unsplash.com/search/photos?page=${page?page:Math.floor(Math.random() * 10) + 1}&query=${input.value ? input.value :'random'}&client_id=${accessKey}&per_page=20`;
-
     let pageNumber = page ? page : Math.floor(Math.random() * 10) + 1;
     let queryTerm = input.value ? input.value : 'random';
     let url = `/.netlify/functions/getImages?page=${pageNumber}&query=${queryTerm}`;
@@ -28,8 +26,8 @@ async function getResponse() {
     .catch(error => {
         console.error('Fetch error:', error);
     });
-    console.log(results);
-    console.log(url);
+    // console.log(results);
+    // console.log(url);
     
     if (page == 1) {
         images.innerHTML = '';
@@ -84,7 +82,7 @@ async function getResponse() {
 }
 
 function downloadIMG(imgUrl) {
-    console.log(imgUrl);
+    // console.log(imgUrl);
     fetch(imgUrl)
         .then(res => res.blob())
         .then((file) => {
@@ -108,9 +106,13 @@ function downloadCustomImage(button, Url) {
     let height = container.querySelector('.custom-height').value;
     let resizedUrl;
 
-    console.log('width',width);
-    console.log('height',height);
-    
+    // console.log('width',width);
+    // console.log('height',height);
+    if ((width && (width < 100 || width > 6000)) || (height && (height < 100 || height > 6000))) {
+        alert("Width and height must be between 100 and 6000 pixels.");
+        return;
+    }
+
 
     if(width && height){
         resizedUrl = `${Url}&w=${width}&h=${height}&fit=crop`;
