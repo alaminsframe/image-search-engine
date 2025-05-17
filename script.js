@@ -45,7 +45,7 @@ async function getResponse() {
                             <span>${result.user.username}</span>
                         </div>
                         <div class="download-btn">
-                            <div class="show-btn" onclick = downloadIMG('${result.urls.regular}')>
+                            <div class="show-btn">
                                 <span>
                                     <img src="assets/down-btn.svg" alt="">
                                 </span>
