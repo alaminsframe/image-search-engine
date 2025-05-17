@@ -8,7 +8,7 @@ async function getResponse() {
     let pageNumber = page ? page : Math.floor(Math.random() * 10) + 1;
     let queryTerm = input.value ? input.value : 'random';
     let url = `/.netlify/functions/getImages?page=${pageNumber}&query=${queryTerm}`;
-    console.log('Fetching from: ',url);
+    //console.log('Fetching from: ',url);
 
     let results = await fetch(url)
     .then(response => {
